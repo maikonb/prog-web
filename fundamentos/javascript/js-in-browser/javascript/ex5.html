@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Javascript - Exemplo 1</title>
+<script type="text/javascript">
+
+var i=0;
+
+function my_onclick() {
+    alert("Clicou");
+}
+function my_onmousemove(param) {
+    log("Mouse sobre: " + param.innerHTML);
+}
+function my_onmouseout(param) {
+    log("Mouse passou sobre: " + param.innerHTML);
+}
+function log(s) {
+    x = document.getElementById("log");
+    x.innerHTML = "<b>" + s + "</b>";
+}
+</script>
+</head>
+<body>
+
+<table width="600px" border="1" id="tabela">
+<tr>
+    <td onmouseout=my_onmouseout(this) 
+        onmousemove=my_onmousemove(this) 
+    > XXX </td>
+
+    <td onmouseout=my_onmouseout(this) 
+        onmousemove=my_onmousemove(this) 
+    > YYY </td>
+</tr>
+<tr>
+    <td colspan=5 id="log"> - </td>
+</tr>
+</table>
+
+</body>
+</html>

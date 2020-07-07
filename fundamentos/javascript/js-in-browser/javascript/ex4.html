@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Validacao Formulario</title>
+
+<script type="text/javascript">
+
+  function validarForm() {
+  
+    nome_input = document.getElementById("id_nome");
+    nome = nome_input.value;
+    if (nome.trim().length == 0) {
+      alert("Faltou digitar o nome"); 
+      nome_input.focus();
+      return false;
+    }
+    
+    idade_input = document.getElementById("id_idade");
+    idade = idade_input.value;
+    if (isNaN(idade) || idade.trim().length==0) {
+        alert("Idade nao digitada corretamente"); 
+        idade_input.focus();
+        return false;
+    }
+    return true;        
+  }
+
+</script>
+</head>
+<body>
+
+  <form method="POST" action="ex4.php" onsubmit="validarForm()" id="formulario">
+    Nome  <input type="text" name="name_nome" id="id_nome"/> <br>
+    Idade <input type="text" name="name_idade" id="id_idade"/> <br>
+    CPF   <input type="text" name="name_cpf" id="id_cpf"/> <br>
+    <input type="submit" value="Validar">
+  </form>
+
+</body>
+</html>

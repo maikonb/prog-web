@@ -1,0 +1,45 @@
+<html>
+<head>
+  <title>Html Vazio</title>
+  <script type="text/javascript">
+    
+    v=[];
+    /* {numero1: X, numero2: Y} */
+    /* onde 0 <  X e Y < 1000 */ 
+    function criarObjetos(numero) {
+        for(i=0;i<numero;i++) {
+            v.push( { 
+                numero1: Math.ceil(Math.random() * 1000),
+                numero2: Math.ceil(Math.random() * 1000),
+            } );
+        }
+    }
+    /* Gerar uma tabela, com tres colunas: 
+          Indice, Numero1 e Numero2, contendo
+       todos os valores armazenados em v[]
+     */
+    function imprimirTabela() {
+        document.write("<table style=\"border: 2px;\">");
+        document.write("<tr>");
+        document.write("    <td> Indice </td>");
+        document.write("    <td> Numero 1 </td>");
+        document.write("    <td> Numero 2 </td>");
+        document.write("</tr>");
+        for(i=0;i<v.length;i++) {
+            document.write("<tr>");
+            document.write("    <td> " + i + " </td>");
+            document.write("    <td> " + v[i].numero1 + " </td>");
+            document.write("    <td> " + v[i].numero2 + " </td>");
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    }
+        
+    criarObjetos(80); 
+
+  </script>
+</head>
+<body>
+  <button onclick=imprimirTabela()>Gerar Tabela </button>
+</body>
+</html>
