@@ -38,7 +38,7 @@ var k='';
 var l=null;
 var m=false;
 var n="A"; // Verdadeiro
-var o=0.00001; // Veradeiro
+var o=0.00001; // Verdadeiro
 
 if (i)
     console.log("(i) retornou verdadeiro");

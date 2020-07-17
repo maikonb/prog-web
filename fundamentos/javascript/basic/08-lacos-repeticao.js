@@ -59,15 +59,24 @@ for (i=0;i<v.length;i++) {
 }    
 
 
-
 // Laco de Repeticao: for...in
+console.log("Laco de Repeticao: for...in");
 for (let i in v) 
     console.log(i);
 
+console.log("Laco de Repeticao: for...in em objetos");
+let p = {
+    nome: "Maria",
+    idade: 50,
+    cidade: "Curitiba",
+    uf: "PR"
+}
 
-
-// Laco de Repeticao: for...of
-for (let i of v) 
+for (let i in p) 
     console.log(i);
 
 
+// Laco de Repeticao: for...of
+console.log("Laco de Repeticao: for...of");
+for (let i of v) 
+    console.log(i);
