@@ -22,3 +22,8 @@ v.push(50);
 console.log(v);
 
 
+console.log('pop', v.pop(), v);
+console.log('pop', v.pop(), v);
+console.log('pop', v.pop(), v);
+console.log('pop', v.pop(), v);
+console.log('pop', v.pop(), v);
