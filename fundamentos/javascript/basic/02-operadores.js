@@ -1,7 +1,4 @@
-// Atribuiçãode bit-a-bit deslocamento á direita não assinado  x >>>= y    x = x >>> y
-
 var x , y, z;
-
 
 // Operadores aritmeticos
 x = 20;
