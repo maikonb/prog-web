@@ -1,6 +1,14 @@
 <html>
 <head>
 <title>Javascript - Exemplo 1</title>
+<style>
+  table, th, td {
+    border: 1px solid black;
+  }
+  table {
+    border-collapse: collapse;
+  }
+</style>
 <script type="text/javascript">
 
 var i=0;
@@ -29,7 +37,7 @@ function my_log() {
 </head>
 <body>
 
-<table width="600px" border="1" id="tabela">
+<table width="600px" id="tabela" style="border: 1px solid black;">
 <tr >
     <td onclick="my_onclick()"> onclick() </td>
     <td ondblclick="my_ondblclick()"> ondblclik() </td>

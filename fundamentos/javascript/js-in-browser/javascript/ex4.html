@@ -29,11 +29,10 @@
 </head>
 <body>
 
-  <form method="POST" action="ex4.php" onsubmit="validarForm()" id="formulario">
+  <form method="POST" action="http://localhost:3000" onsubmit="return(validarForm())" id="formulario">
     Nome  <input type="text" name="name_nome" id="id_nome"/> <br>
     Idade <input type="text" name="name_idade" id="id_idade"/> <br>
-    CPF   <input type="text" name="name_cpf" id="id_cpf"/> <br>
-    <input type="submit" value="Validar">
+    <input type="submit" value="Enviar">
   </form>
 
 </body>
