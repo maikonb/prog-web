@@ -28,6 +28,15 @@ const requestHandler = (req, res) => {
 
     });
   }
+  else if (req.url==="/" && req.method==="GET") {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end('<h1> Hello! </h1>');
+  }
+  else {
+    res.writeHead(404);
+    res.end();
+  }
+
 }
 
 const server = http.createServer(requestHandler)
