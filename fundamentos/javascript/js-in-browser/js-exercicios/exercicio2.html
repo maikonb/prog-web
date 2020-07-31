@@ -15,11 +15,11 @@
         var elementos = [];
         
         function getRandomProgressBarColor() {
-            var classes = ['progress-bar-info', 
-                           'progress-bar-primary', 
-                           'progress-bar-success', 
-                           'progress-bar-warning', 
-                           'progress-bar-danger'];
+            var classes = ['bg-info', 
+                           'bg-primary', 
+                           'bg-success', 
+                           'bg-warning', 
+                           'bg-danger'];
             var n = Math.round(Math.random()*(classes.length-1));
             return classes[n];
         }
@@ -29,7 +29,7 @@
             var s = "";
             for (var i=0; i<elementos.length; i++) {
 
-                s +=    '<div class="progress" style="width:240px;">' +
+                s +=    '<div class="progress" style="width:240px; margin-bottom: 20px;">' +
                         '<div class="progress-bar ' + getRandomProgressBarColor() + ' progress-bar-striped"'+
                         ' role="progressbar" aria-valuenow="' + elementos[i] +
                         '" aria-valuemin="0" aria-valuemax="100" style="width: ' + elementos[i] + 
@@ -66,11 +66,11 @@
     <table>
         <tr>
             <td height="40">Valor: &nbsp;&nbsp;</td>
-            <td height="40" width="60" ><input id="valor" type="number" value="0" class="form-control" placeholder="Valor"></td>
+            <td height="40" width="100" ><input id="valor" type="number" value="0" class="form-control" placeholder="Valor"></td>
         </tr>
         <tr>
             <td height="40">&nbsp;</td>
-            <td height="40"> <button id="btnInserir" type="button" class="btn btn-primary" onClick=inserir()>Inserir</button></td>
+            <td height="40" width="100" > <button id="btnInserir" type="button" class="btn btn-primary" onClick=inserir()>Inserir</button></td>
         </tr>
     </table>
     <br>
