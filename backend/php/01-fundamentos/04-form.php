@@ -11,9 +11,9 @@
     print_r($_GET);
     echo "</p>";
 
-    if (isset($_POST))
+    if (count($_POST) > 0)
         $pessoas[] = $_POST;
-    elseif (isset($_GET))
+    elseif (count($_GET) > 0)
         $pessoas[]=$_GET;
 
 ?>
