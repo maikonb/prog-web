@@ -37,16 +37,18 @@ class MeuTipoInteiro extends MeuTipo {
     }
 }
 
-//$m = new MeuTipo(12);
+function somar(MeuTipo $obj, $valor) {
+    $obj->somar($valor);
+}
 
 $s = new MeuTipoString("Ola");
-$s->somar(" Mundo");
-$s->somar("!!");
+somar($s, " Mundo");
+somar($s, "!!");
 $s->imprimir();
 
 $n = new MeuTipoInteiro(100);
-$n->somar(100);
-$n->somar(100);
+somar($n, 100);
+somar($n, 100);
 $n->imprimir();
 
 ?>
