@@ -29,6 +29,7 @@
             $atributos = get_object_vars($this);
             var_dump($atributos);
             var_dump( array_keys( $atributos ) );
+            echo "\n";
         }
     };
     
@@ -37,6 +38,8 @@
         $c = count($_SESSION["objetos"]); 
 
     $objeto = new MinhaClasse($c+1,$c+2);
+
+    $objeto->imprimir();
 
     $_SESSION["objetos"][] = $objeto;
     foreach($_SESSION["objetos"] as $i=>$o) {
