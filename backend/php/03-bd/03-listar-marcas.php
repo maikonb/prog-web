@@ -62,4 +62,28 @@ if ($conectado) {
     }
     $stmt->close();
   }
+
+
+  // Modo 4
+  echo "<p>Listando marcas - Modo 4 </p>\n";
+  $sql = "SELECT id, nome FROM marcas";
+  $res = $mysqli->query($sql); 
+
+  if ($res) {
+    echo "<p>Foram encontrados $res->num_rows registros.</p>\n";
+    //$arr = $res->fetch_all(MYSQLI_NUM);
+    //var_dump($arr);
+    //echo "<br>\n";
+    $arr = $res->fetch_all(MYSQLI_ASSOC);
+    //var_dump($arr);
+    //echo "<br>\n";
+
+    echo "<ul>";
+    foreach($arr as $marca) {
+      echo "<li>" . $marca['id'] . " - " . $marca['nome'] . "</li> \n";
+    }
+    echo "</ul>";
+    mysqli_free_result($res);
+  }
+  echo "<hr>\n";
 }
