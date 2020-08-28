@@ -1,6 +1,7 @@
 <?php
 
 require_once('01-conexao-bd.php');
+require_once('04-marcas.php');
 
 function atualizarMarcaAleatoria($marcas) {
   if (count($marcas) > 0) {
