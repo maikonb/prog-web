@@ -28,7 +28,7 @@ if ($conectado) {
     $nome = 'Apple';
     $ret2 = $stmt->execute();
 
-    $nome = 'Samsung';
+    $nome = 'Asus';
     $ret3 = $stmt->execute();
 
     if ($ret1 && $ret1 && $ret3)
