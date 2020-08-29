@@ -50,7 +50,7 @@ class Db {
         return $res;            
     }
     
-    public function prepare($sql) {
+    public function prepare($sql) : mysqli_stmt {
         return $this->mysqli->prepare($sql);
     }
     

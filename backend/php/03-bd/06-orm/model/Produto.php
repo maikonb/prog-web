@@ -1,7 +1,6 @@
 <?php 
 
-require_once('../model/marca.php');
-require_once('../model/Marca.php');
+require_once('Marca.php');
 
 class Produto {
     
@@ -12,10 +11,11 @@ class Produto {
   private $marca;
   private $departamentos = [];
 
-  public function __construct(string $nome="", float $preco=0.0, Marca $marca=null, int $id=-1) {
+  public function __construct(string $nome="", float $preco=0.0, $estoque=0, Marca $marca=null, int $id=-1) {
       $this->id = $id;
       $this->nome = $nome;
       $this->preco = $preco;
+      $this->estoque = $estoque;
       $this->marca = $marca;
       $this->departamentos = [];
   }

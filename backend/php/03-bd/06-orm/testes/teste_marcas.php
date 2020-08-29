@@ -4,78 +4,79 @@ require_once('../db/Db.php');
 require_once('../model/Marca.php');
 require_once('../dao/DaoMarca.php');
 
-function testar_inserir(DaoMarca $dao, Marca $dep): bool {
+
+function DaoMarca_testar_inserir(DaoMarca $dao, Marca $marca): bool {
   echo "Testando 'inserir'... ";
-  $ret = $dao->inserir($dep);
+  $ret = $dao->inserir($marca);
   echo ($ret) ? "Ok <br>\n" : "Erro <br>\n";
   return $ret;
 }
 
-function testar_porId(DaoMarca $dao, Marca $dep): bool {
+function DaoMarca_testar_porId(DaoMarca $dao, Marca $marca): bool {
   echo "Testando 'porId()'... ";
-  $id = $dep->getId();
-  $ret = false;
-  $depById = $dao->porId($id);
-  if (!is_null($depById)) {
-    if ($depById->getNome() == $dep->getNome())
-      $ret = true;
-  }
+  $id = $marca->getId();
+  $marcaById = $dao->porId($id);
+  $ret =  (!is_null($marcaById)) && 
+          $marcaById->getId() == $marca->getId() &&
+          $marcaById->getNome() == $marca->getNome() ;
   echo ($ret) ? "Ok <br>\n" : "Erro <br>\n";
   return $ret;
 }
 
-function testar_todos(DaoMarca $dao, Marca $dep): bool {
+function DaoMarca_testar_todos(DaoMarca $dao, Marca $marca): bool {
   echo "Testando 'todos()'... ";
   $ret = false;
-  $deps = $dao->todos();
-  if (is_array($deps) && count($deps)>0 ) {
-    foreach($deps as $d) {
-      if ($d->getId() == $dep->getId())
-        if ($d->getNome() == $dep->getNome())
-          $ret = true; 
+  $marcas = $dao->todos();
+  if (is_array($marcas) && count($marcas)>0 ) {
+    foreach($marcas as $d) {
+      $ret =  $d->getId() == $marca->getId() &&
+              $d->getNome() == $marca->getNome();
+      if ($ret) break;
     }
   }
   echo ($ret) ? "Ok <br>\n" : "Erro <br>\n";
   return $ret;
 }
 
-function testar_atualizar(DaoMarca $dao, Marca $dep): bool {
+function DaoMarca_testar_atualizar(DaoMarca $dao, Marca $marca): bool {
   echo "Testando 'atualizar()'... ";
   $ret = false;
-  $novoNome = $dep->getNome() . '[modificado]';
-  $dep->setNome( $novoNome );
-  if ( $dao->atualizar($dep) ) {
-    $depAtualizado = $dao->porId( $dep->getId() );
-    $ret = $depAtualizado->getNome() === $novoNome;
+  $novoNome = $marca->getNome() . '[modificado]';
+  $marca->setNome( $novoNome );
+  if ( $dao->atualizar($marca) ) {
+    $marcaAtualizado = $dao->porId( $marca->getId() );
+    $ret = $marcaAtualizado->getNome() === $novoNome;
   }
   echo ($ret) ? "Ok <br>\n" : "Erro <br>\n";
   return $ret;
 }
 
-function testar_remover(DaoMarca $dao, Marca $dep): bool {
+function DaoMarca_testar_remover(DaoMarca $dao, Marca $marca): bool {
   echo "Testando 'remover()'... ";
   $ret = false;
-  if ( $dao->remover($dep) ) {
-    $depRemovido = $dao->porId( $dep->getId() );
-    $ret = is_null($depRemovido);
+  if ( $dao->remover($marca) ) {
+    $marcaRemovido = $dao->porId( $marca->getId() );
+    $ret = is_null($marcaRemovido);
   }
   echo ($ret) ? "Ok <br>\n" : "Erro <br>\n";
   return $ret;
 }
 
 
-function testar_DaoMarcas(): bool {
+function testar_DaoMarca(): bool {
+  echo "<h2>Testando DaoMarca</h2>\n";
+
   $db = new Db("localhost", "user", "user", "vendas");
 
   if ($db->connect()) {
     $daoDep = new DaoMarca($db);
-    $dep = new Marca("marca teste");
+    $marca = new Marca("marca teste");
 
-    testar_inserir($daoDep, $dep);
-    testar_porId($daoDep, $dep);
-    testar_todos($daoDep, $dep);
-    testar_atualizar($daoDep, $dep);
-    testar_remover($daoDep, $dep);
+    DaoMarca_testar_inserir($daoDep, $marca);
+    DaoMarca_testar_porId($daoDep, $marca);
+    DaoMarca_testar_todos($daoDep, $marca);
+    DaoMarca_testar_atualizar($daoDep, $marca);
+    DaoMarca_testar_remover($daoDep, $marca);
 
     return true;
   }
@@ -85,4 +86,4 @@ function testar_DaoMarcas(): bool {
   }    
 }
 
-testar_DaoMarcas();
+// testar_DaoMarca();
