@@ -16,6 +16,7 @@ class Db {
         $this->db     = $db;
         $this->connected = false;
     }
+    
     public function __destruct() {
         if ($this->connected) 
             $this->mysqli->close();
