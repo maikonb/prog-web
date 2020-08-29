@@ -1,6 +1,5 @@
 <?php 
 require_once('../model/Departamento.php');
-require_once('../model/Produto.php');
 require_once('../db/Db.php');
 
 // Classe para persistencia de Departamentos 
@@ -13,7 +12,7 @@ class DaoDepartamento {
       $this->connection = $connection;
   }
   
-  public function getByID(int $id): Departamento {
+  public function porId(int $id): ?Departamento {
     $sql = "SELECT nome FROM departamentos where id = ?";
     $stmt = $this->connection->prepare($sql);
     $dep = null;
@@ -24,7 +23,7 @@ class DaoDepartamento {
         $stmt->bind_result($nome);
         $stmt->store_result();
         if ($stmt->num_rows == 1 && $stmt->fetch()) {
-          $dep = new Departamento($id, $nome);
+          $dep = new Departamento($nome, $id);
         }
       }
       $stmt->close();
@@ -77,7 +76,7 @@ class DaoDepartamento {
   }
 
   
-  public function getAll(): array {
+  public function todos(): array {
     $sql = "SELECT id, nome from departamentos";
     $stmt = $this->connection->prepare($sql);
     $departamentos = [];
@@ -87,7 +86,7 @@ class DaoDepartamento {
         $stmt->bind_result($id, $nome);
         $stmt->store_result();
         while($stmt->fetch()) {
-          $departamentos[] = new Departamento($id, $nome);
+          $departamentos[] = new Departamento($nome, $id);
         }
       }
       $stmt->close();

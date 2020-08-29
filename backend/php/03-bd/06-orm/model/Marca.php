@@ -5,7 +5,7 @@ class Marca {
   private $id;
   private $nome;
 
-  public function __construct(int $id=-1, string $nome='') {
+  public function __construct(string $nome='', int $id=-1) {
       $this->id = $id;
       $this->nome = $nome;
   }

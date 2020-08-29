@@ -5,12 +5,12 @@ class Departamento {
   private $id;
   private $nome;
 
-  public function __construct($id, $nome) {
+  public function __construct(string $nome='', int $id=-1) {
       $this->id = $id;
       $this->nome = $nome;
   }
 
-  public function setId($id) {
+  public function setId(int $id) {
       $this->id = $id;
   }
 
@@ -18,7 +18,7 @@ class Departamento {
       return $this->id;
   }
 
-  public function setNome($nome) {
+  public function setNome(string $nome) {
       $this->nome = $nome;
   }
 

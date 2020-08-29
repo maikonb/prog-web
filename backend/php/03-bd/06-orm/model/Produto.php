@@ -12,7 +12,7 @@ class Produto {
   private $marca;
   private $departamentos = [];
 
-  public function __construct(int $id=-1, string $nome="", float $preco=0.0, Marca $marca=null) {
+  public function __construct(string $nome="", float $preco=0.0, Marca $marca=null, int $id=-1) {
       $this->id = $id;
       $this->nome = $nome;
       $this->preco = $preco;
@@ -20,7 +20,7 @@ class Produto {
       $this->departamentos = [];
   }
   
-  public function setId($id) {
+  public function setId(int $id) {
       $this->id = $id;
   }
 
