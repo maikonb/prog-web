@@ -1,5 +1,5 @@
 <?php 
-function html($content) {
+function html($content, $root_relative_path='../') {
   ob_start();
 ?>
 
@@ -27,13 +27,13 @@ function html($content) {
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../departamentos">Departamentos</a>
+                    <a class="nav-link" href="<?php echo $root_relative_path . 'departamentos'; ?>">Departamentos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../marcas">Marcas</span></a>
+                    <a class="nav-link" href="<?php echo $root_relative_path . 'marcas'; ?>">Marcas</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../produtos">Produtos </a>
+                    <a class="nav-link" href="<?php echo $root_relative_path . 'produtos'; ?>">Produtos </a>
                 </li>
             </ul>
             <span class="navbar-text">
