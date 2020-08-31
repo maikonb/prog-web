@@ -20,7 +20,7 @@ if (isset($_POST['id']) && isset($_POST['confirmacao'])) {
   $marca = $daoMarca->porId( $_POST['id'] );
   $daoMarca->remover( $marca );
   header('Location: ./index.php');
-  exit;  // Termino a execucação desse escript
+  exit;  // Termino a execucação desse script
 }
 
 // Se não for confirmação, exibo a confirmação

@@ -122,10 +122,24 @@ class DaoProduto {
             WHERE produto_id=$id";
     if ($res = $this->connection->query($sql)) {
 
-      $ids_departamentos = $res->fetch_all(MYSQLI_NUM);
+      $array_ids = $res->fetch_all(MYSQLI_NUM);
+      $ids_departamentos = array_map(function($a) { return $a[0]; }, $array_ids);
       $ids_apagar  = array_diff($ids_departamentos, $ids_departamentos_novos);
       $ids_inserir = array_diff($ids_departamentos_novos, $ids_departamentos);
 
+      /* 
+      // Para depurar e entender o código:
+      echo "<br><br>ids_departamentos_novos:";
+      var_dump($ids_departamentos_novos);
+      echo "<br><br>ids_departamentos:";      
+      var_dump($ids_departamentos);
+      echo "<br><br>ids_inserir:";      
+      var_dump($ids_inserir);
+      echo "<br><br>ids_apagar"; 
+      var_dump($ids_apagar);
+      exit; 
+      */
+      
       if (count($ids_apagar) > 0) {
         $sql_apagar_in = implode(",", $ids_apagar); // Formato da saida: 10, 20, 30
         $sql_apagar  = "DELETE FROM produto_departamento 

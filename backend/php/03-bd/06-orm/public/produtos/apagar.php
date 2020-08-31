@@ -18,9 +18,11 @@ $daoProduto = new DaoProduto($conn);
 // Se for confirmação, apago o registro e redireciono para o index.php
 if (isset($_POST['id']) && isset($_POST['confirmacao'])) {
   $produto = $daoProduto->porId( $_POST['id'] );
+  // Apagar registros em produto_departamento:
+  $daoProduto->sincronizarDepartamentos( $produto, [] ); 
   $daoProduto->remover( $produto );
   header('Location: ./index.php');
-  exit;  // Termino a execucação desse escript
+  exit;  // Termino a execucação desse script
 }
 
 // Se não for confirmação, exibo a confirmação

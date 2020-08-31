@@ -30,7 +30,6 @@ if (! $produto )
 else {  
 
     $daoProduto->carregarDepartamentos($produto);
-    var_dump($produto->getDepartamentos());
     $departamentos_ids = array_reduce($produto->getDepartamentos(), 
         function($ids, Departamento $dep) {
             $ids[] = $dep->getId();
@@ -49,6 +48,9 @@ else {
             <div class="col-md-12" >
 
                 <form action="atualizar.php" method="POST">
+
+                    <input type="hidden" name="id" 
+                          value="<?php echo $produto->getId(); ?>"> 
 
                     <div class="form-group">
                         <label for="nome">Nome do produto</label>
