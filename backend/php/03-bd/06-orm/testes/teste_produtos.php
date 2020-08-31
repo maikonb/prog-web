@@ -47,15 +47,13 @@ function DaoProd_testar_todos(DaoProduto $dao, Produto $prod): bool {
   return $ret;
 }
 
-function DaoProd_testar_atualizar(DaoProduto $daoProd, DaoMarca $daoMarca, Produto $prod): bool {
+function DaoProd_testar_atualizar(DaoProduto $daoProd, Marca $novaMarca, Produto $prod): bool {
   echo "Testando 'atualizar()'... ";
   $ret = false;
   
   $novoNome = $prod->getNome() . '[modificado]';
   $novoPreco = 555.88;
   $novoEstoque = 89;
-  $novaMarca = new Marca("marca teste");
-  $daoMarca->inserir($novaMarca);
 
   $prod->setNome( $novoNome );
   $prod->setPreco( $novoPreco );
@@ -97,15 +95,21 @@ function testar_DaoProduto(): bool {
     $daoMarca = new DaoMarca($db);
     $daoProd = new DaoProduto($db);
 
-    $marca = new Marca("marca teste");
+    $marca = new Marca("marca 1");
     $daoMarca->inserir($marca);
+    $novaMarca = new Marca("marca 2");
+    $daoMarca->inserir($novaMarca);
+
     $prod = new Produto("produto teste", 900.99, 888, $marca);
 
     DaoProd_testar_inserir($daoProd, $prod);
     DaoProd_testar_porId($daoProd, $prod);
     DaoProd_testar_todos($daoProd, $prod);
-    DaoProd_testar_atualizar($daoProd, $daoMarca, $prod);
+    DaoProd_testar_atualizar($daoProd, $novaMarca, $prod);
     DaoProd_testar_remover($daoProd, $prod);
+
+    $daoMarca->remover( $marca );
+    $daoMarca->remover( $novaMarca );
 
     return true;
   }

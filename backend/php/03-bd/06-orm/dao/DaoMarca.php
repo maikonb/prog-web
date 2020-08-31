@@ -1,6 +1,6 @@
 <?php 
-require_once('../model/Marca.php');
-require_once('../db/Db.php');
+require_once(__DIR__ . '/../model/Marca.php');
+require_once(__DIR__ . '/../db/Db.php');
 
 // Classe para persistencia de Marcas 
 // DAO - Data Access Object
