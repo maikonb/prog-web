@@ -64,7 +64,7 @@ ob_start();
                     <div class="form-group">
                         <label for="departamentos">Selecione os Departamentos</label>
                         <select multiple size="5" class="form-control" id="departamentos" 
-                            name="departamentos"  aria-describedby="departamentosHelp"
+                            name="departamentos[]"  aria-describedby="departamentosHelp"
                         >
 <?php foreach($departamentos as $dep) { ?>
                             <option value="<?php echo $dep->getId() ?>">

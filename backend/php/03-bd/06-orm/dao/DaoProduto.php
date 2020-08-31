@@ -115,5 +115,37 @@ class DaoProduto {
     return $produtos;
   }
 
+  public function sincronizarDepartamentos(Produto $prod, array $ids_departamentos_novos): bool {
+    $id = $prod->getId();
+    $sql = "SELECT departamento_id FROM produto_departamento 
+            WHERE produto_id=$id";
+    if ($res = $this->connection->query($sql)) {
+
+      $ids_departamentos = $res->fetch_all(MYSQLI_NUM);
+      $ids_apagar  = array_diff($ids_departamentos, $ids_departamentos_novos);
+      $ids_inserir = array_diff($ids_departamentos_novos, $ids_departamentos);
+
+      if (count($ids_apagar) > 0) {
+        $sql_apagar_in = implode(",", $ids_apagar); // Formato da saida: 10, 20, 30
+        $sql_apagar  = "DELETE FROM produto_departamento 
+                        WHERE produto_id=$id and departamento_id 
+                        IN ( $sql_apagar_in )";
+        $this->connection->query($sql_apagar);                   
+      }
+      if (count($ids_inserir) > 0) {
+        $sql_inserir_values = array_reduce($ids_inserir, function($carry, $item) use($id) { 
+          if ($carry=='')
+            return "($id, $item)";
+          return $carry . ", ($id, $item)";
+        }, ''); // Formato da saida: (1,10), (1,20), (1, 30)
+        $sql_inserir = "INSERT INTO produto_departamento (produto_id, departamento_id)
+                        VALUES $sql_inserir_values ";
+        $this->connection->query($sql_inserir);  
+      }
+      return true;
+    }
+    return false;
+  }
+
 };
 
