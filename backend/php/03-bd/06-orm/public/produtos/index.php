@@ -45,18 +45,18 @@ ob_start();
                 </thead>
                 <tbody>
 <?php 
-        foreach($produtos as $d) {
+        foreach($produtos as $p) {
 ?>                    
                     <tr>
-                        <th scope="row"><?php echo  $d->getId(); ?></th>
-                        <td><?php echo $d->getNome(); ?></td>
+                        <th scope="row"><?php echo  $p->getId(); ?></th>
+                        <td><?php echo $p->getNome(); ?></td>
                         <td>
                             <a class="btn btn-danger btn-sm active" 
-                                href="apagar.php?id=<?php echo $d->getId();?>">
+                                href="apagar.php?id=<?php echo $p->getId();?>">
                                 Apagar
                             </a>
                             <a class="btn btn-secondary btn-sm active" 
-                                href="editar.php?id=<?php echo $d->getId();?>">
+                                href="editar.php?id=<?php echo $p->getId();?>">
                                 Editar
                             </a>                        
                         </td>

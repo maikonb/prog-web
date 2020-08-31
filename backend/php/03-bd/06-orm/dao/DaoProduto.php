@@ -1,6 +1,7 @@
 <?php 
 require_once(__DIR__ . '/../model/Produto.php');
 require_once(__DIR__ . '/../model/Marca.php');
+require_once(__DIR__ . '/../model/Departamento.php');
 require_once(__DIR__ . '/../db/Db.php');
 
 // Classe para persistencia de Produtos 
@@ -142,6 +143,25 @@ class DaoProduto {
                         VALUES $sql_inserir_values ";
         $this->connection->query($sql_inserir);  
       }
+      return true;
+    }
+    return false;
+  }
+
+
+  public function carregarDepartamentos(Produto $prod): bool {
+    $id = $prod->getId();
+    $sql = "SELECT departamentos.id, departamentos.nome FROM produto_departamento
+            LEFT JOIN departamentos ON departamentos.id=produto_departamento.departamento_id
+            WHERE produto_id=$id";
+
+    if ($res = $this->connection->query($sql)) {
+      $departamentos_assoc = $res->fetch_all(MYSQLI_ASSOC);
+      $departamentos = [];
+      foreach($departamentos_assoc as $d) {
+        $departamentos[] = new Departamento($d['nome'], $d['id']);
+      }
+      $prod->setDepartamentos($departamentos);
       return true;
     }
     return false;
