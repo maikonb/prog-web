@@ -1,6 +1,6 @@
 <?php 
-require_once('../model/Departamento.php');
-require_once('../db/Db.php');
+require_once(__DIR__ . '/../model/Departamento.php');
+require_once(__DIR__ . '/../db/Db.php');
 
 // Classe para persistencia de Departamentos 
 // DAO - Data Access Object

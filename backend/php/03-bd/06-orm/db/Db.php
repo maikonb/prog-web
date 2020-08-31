@@ -34,14 +34,6 @@ class Db {
         return true;
     }
 
-    public function execute($sql) {
-        $res = false;
-        if ($this->connected) {
-            $res = $this->mysqli->query($sql);
-        }        
-        return $res;            
-    }
-
     public function query($sql) {
         $res = NULL;
         if ($this->connected) {
