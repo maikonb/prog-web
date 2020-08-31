@@ -38,12 +38,13 @@ else {
                           value="<?php echo $departamento->getNome(); ?>"
                           class="form-control" name="nome" required>
                       <div class="input-group-append">
-                          <button type="submit" class="btn btn-secondary">
+                          <button type="submit" class="btn btn-primary">
                               Salvar
                           </button>
                       </div>
                   </div>
               </form>
+              <a href="index.php" class="btn btn-secondary ml-1" role="button" aria-pressed="true">Cancelar</a>
 
             </div>
         </div>
