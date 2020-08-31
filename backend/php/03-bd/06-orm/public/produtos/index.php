@@ -40,6 +40,8 @@ ob_start();
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Estoque</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
@@ -50,6 +52,8 @@ ob_start();
                     <tr>
                         <th scope="row"><?php echo  $p->getId(); ?></th>
                         <td><?php echo $p->getNome(); ?></td>
+                        <td><?php echo $p->getMarca()->getNome(); ?></td>
+                        <td><?php echo $p->getEstoque(); ?></td>
                         <td>
                             <a class="btn btn-danger btn-sm active" 
                                 href="apagar.php?id=<?php echo $p->getId();?>">
