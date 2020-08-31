@@ -18,7 +18,7 @@ function html($content, $root_relative_path='../') {
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Vendas</a>
+        <a class="navbar-brand" href="<?php echo $root_relative_path . 'index.php'; ?>">Vendas</a>
         <button class="navbar-toggler" 
             type="button" data-toggle="collapse" data-target="#navbarText" 
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

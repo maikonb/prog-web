@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/../template-html.php');
+require_once(__DIR__ . '/../../templates/template-html.php');
 require_once(__DIR__ . '/../../db/Db.php');
 require_once(__DIR__ . '/../../model/Produto.php');
 require_once(__DIR__ . '/../../dao/DaoProduto.php');
