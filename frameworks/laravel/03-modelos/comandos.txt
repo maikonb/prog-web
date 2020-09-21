@@ -11,3 +11,10 @@ php artisan make:model Produto -m
 # Criando migration para produto_departamento
 php artisan make:migration --create=produto_departamento create_table_produto_departamento
 
+
+
+
+php artisan migrate
+php artisan migrate:rollback
+php artisan migrate:fresh 
+php artisan migrate:status

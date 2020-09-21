@@ -18,7 +18,7 @@ class CreateTableProdutoDepartamento extends Migration
             $table->unsignedBigInteger('departamento_id');
             $table->foreign('produto_id')->references('id')->on('produtos');
             $table->foreign('departamento_id')->references('id')->on('departamentos');
-            $table->primary(['produto_id','produto_id']);
+            $table->primary(['produto_id','departamento_id']);
         });
     }
 
