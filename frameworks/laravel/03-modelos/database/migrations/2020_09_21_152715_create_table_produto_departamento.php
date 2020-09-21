@@ -14,8 +14,11 @@ class CreateTableProdutoDepartamento extends Migration
     public function up()
     {
         Schema::create('produto_departamento', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('produto_id');
+            $table->unsignedBigInteger('departamento_id');
+            $table->foreign('produto_id')->references('id')->on('produtos');
+            $table->foreign('departamento_id')->references('id')->on('departamentos');
+            $table->primary(['produto_id','produto_id']);
         });
     }
 
