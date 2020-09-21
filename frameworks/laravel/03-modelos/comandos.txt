@@ -1,13 +1,13 @@
-# Criando migration e o model para Produtos
-php artisan make:migration --create=produtos create_table_produtos
-php artisan make:model Produto
-
 # Criando migration e o model para Departamentos 
 php artisan make:migration --create=departamentos create_table_departamentos
 php artisan make:model Departamento
 
+# Criando modelo e migration para Marcas
+php artisan make:model Marca -m
+
+# Criando migration e o model para Produtos
+php artisan make:model Produto -m
+
 # Criando migration para produto_departamento
 php artisan make:migration --create=produto_departamento create_table_produto_departamento
 
-# Criando modelo e migration para Marcas
-php artisan make:model Marca -m
