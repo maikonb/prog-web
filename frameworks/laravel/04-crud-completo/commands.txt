@@ -1,0 +1,11 @@
+composer require laravel/ui:^3.0
+php artisan ui bootstrap
+npm install && npm run dev
+
+# Criando modelo, migration e controlador com resources
+php artisan make:model -mcr Marca 
+php artisan make:model -mcr Departamento 
+php artisan make:model -mcr Produto 
+php artisan make:migration --create=produto_departamento create_table_produto_departamento
+
+

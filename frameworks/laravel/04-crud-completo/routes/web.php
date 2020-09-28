@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DepartamentosController;
+use App\Http\Controllers\MarcasController;
+use App\Http\Controllers\ProdutosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('index');
+
+
+Route::resource('marcas', MarcasController::class);
+Route::resource('departamentos', DepartamentosController::class);
+Route::resource('produtos', ProdutosController::class);
