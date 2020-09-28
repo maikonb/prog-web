@@ -4,15 +4,15 @@
 
 <div class="container">
     <div class="py-5 text-center">
-        <h2>Cadastro de Departamentos</h2>
+        <h2>Cadastro de Marcas</h2>
     </div>
     <div class="row">
         <div class="col-md-12" >
 
-            <form action="{{ route('departamentos.store') }}" class="card p-2 my-4" method="POST">
+            <form action="{{ route('marcas.store') }}" class="card p-2 my-4" method="POST">
                 @csrf
                 <div class="input-group">
-                    <input type="text" placeholder="Nome do Departamento" 
+                    <input type="text" placeholder="Nome da Marca" 
                         class="form-control" name="nome" required>
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </form>
-            <a href="{{ route('departamentos.index') }}" 
+            <a href="{{ route('marcas.index') }}" 
             class="btn btn-secondary ml-1" role="button" aria-pressed="true">Cancelar</a>
 
         </div>
