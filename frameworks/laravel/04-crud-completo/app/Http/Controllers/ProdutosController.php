@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departamento;
+use App\Models\Marca;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class ProdutosController extends Controller
@@ -13,7 +16,8 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-        //
+        $produtos = Produto::all();
+        return view('produtos.index', compact('produtos'));
     }
 
     /**
@@ -23,7 +27,9 @@ class ProdutosController extends Controller
      */
     public function create()
     {
-        //
+        $marcas = Marca::all();
+        $departamentos = Departamento::all();
+        return view('produtos.create', compact(['marcas', 'departamentos']));
     }
 
     /**
@@ -34,7 +40,15 @@ class ProdutosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produto = new Produto();
+        $produto->nome = $request->nome;
+        $produto->preco = $request->preco;
+        $produto->estoque = $request->estoque;
+        $produto->marca_id = $request->marca;
+        $produto->save();
+
+        $produto->departamentos()->sync($request->departamentos);
+
     }
 
     /**
@@ -43,7 +57,7 @@ class ProdutosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Produto $produto)
     {
         //
     }
@@ -54,9 +68,14 @@ class ProdutosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Produto $produto)
     {
-        //
+        $marcas = Marca::all();
+        $departamentos = Departamento::all();
+        return view(
+            'produtos.edit', 
+            compact(['marcas', 'departamentos', 'produto'])
+        );
     }
 
     /**
@@ -66,9 +85,16 @@ class ProdutosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Produto $produto)
     {
-        //
+        $produto->nome = $request->nome;
+        $produto->preco = $request->preco;
+        $produto->estoque = $request->estoque;
+        $produto->marca_id = $request->marca;
+        $produto->save();
+
+        $produto->departamentos()->sync($request->departamentos);        
+        return redirect()->route('produtos.index');
     }
 
     /**
