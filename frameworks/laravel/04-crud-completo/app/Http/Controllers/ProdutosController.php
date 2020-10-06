@@ -48,7 +48,8 @@ class ProdutosController extends Controller
         $produto->save();
 
         $produto->departamentos()->sync($request->departamentos);
-        return redirect()->route('produtos.index');
+        return redirect()->route('produtos.index')
+            ->with('msg_success', 'Produto criado com sucesso.');
 
     }
 
@@ -97,7 +98,8 @@ class ProdutosController extends Controller
         $produto->save();
 
         $produto->departamentos()->sync($request->departamentos);        
-        return redirect()->route('produtos.index');
+        return redirect()->route('produtos.index')
+            ->with('msg_success', 'Produto atualizado com sucesso.');
     }
 
     /**
@@ -106,8 +108,13 @@ class ProdutosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Produto $produto)
     {
-        //
+        if ($produto->delete())
+            return redirect()->route('produtos.index')
+                ->with('msg_success', 'Produto removido com sucesso.'); 
+
+        return redirect()->route('produtos.index')
+            ->with('msg_error', 'Ocorreu um erro ao remover este produto.'); 
     }
 }

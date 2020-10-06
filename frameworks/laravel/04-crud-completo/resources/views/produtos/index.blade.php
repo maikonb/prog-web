@@ -36,6 +36,7 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Preço</th>
                     <th scope="col">Estoque</th>
+                    <th scope="col">Marca</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
@@ -47,6 +48,7 @@
                     <td>{{ $produto->nome }}</td>
                     <td>R$ {{ number_format($produto->preco, 2, ',', '.') }}</td>
                     <td>{{ $produto->estoque }} unidade(s)</td>
+                    <td>{{ $produto->marca->nome }}</td>
                     <td>
                         <form action="{{ route('produtos.destroy', $produto->id) }}" method="POST">
                             @csrf

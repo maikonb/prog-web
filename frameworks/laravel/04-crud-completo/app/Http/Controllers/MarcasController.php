@@ -48,7 +48,7 @@ class MarcasController extends Controller
         $marca->nome = $request->nome;
         $marca->save();
         return redirect()->route('marcas.index')
-            ->with('msg_success', 'Marca criado com sucesso.');
+            ->with('msg_success', 'Marca criada com sucesso.');
     }
 
     /**
