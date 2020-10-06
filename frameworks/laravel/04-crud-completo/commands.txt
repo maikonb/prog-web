@@ -9,3 +9,4 @@ php artisan make:model -mcr Produto
 php artisan make:migration --create=produto_departamento create_table_produto_departamento
 
 
+php artisan make:controller -i IndexController
