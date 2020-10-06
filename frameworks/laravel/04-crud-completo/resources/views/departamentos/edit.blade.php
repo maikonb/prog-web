@@ -26,7 +26,7 @@
                 <div class="alert alert-danger my-2" role="alert">
                     {{ $message }}
                 </div>
-                @enderror                
+                @enderror
             </form>
             <a href="{{ route('departamentos.index') }}" 
             class="btn btn-secondary ml-1" role="button" aria-pressed="true">Cancelar</a>

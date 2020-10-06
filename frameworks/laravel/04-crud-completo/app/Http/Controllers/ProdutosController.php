@@ -48,6 +48,7 @@ class ProdutosController extends Controller
         $produto->save();
 
         $produto->departamentos()->sync($request->departamentos);
+        return redirect()->route('produtos.index');
 
     }
 
@@ -59,7 +60,9 @@ class ProdutosController extends Controller
      */
     public function show(Produto $produto)
     {
-        //
+        $departamentos = $produto->departamentos;
+        return view('produtos.show', 
+            compact(['departamentos', 'produto']));
     }
 
     /**

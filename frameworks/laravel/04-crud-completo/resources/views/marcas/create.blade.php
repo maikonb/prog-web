@@ -20,6 +20,11 @@
                         </button>
                     </div>
                 </div>
+                @error("nome")
+                <div class="alert alert-danger my-2" role="alert">
+                    {{ $message }}
+                </div>
+                @enderror                
             </form>
             <a href="{{ route('marcas.index') }}" 
             class="btn btn-secondary ml-1" role="button" aria-pressed="true">Cancelar</a>

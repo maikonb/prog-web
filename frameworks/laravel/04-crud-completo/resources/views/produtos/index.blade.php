@@ -34,28 +34,32 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Estoque</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
 
-                @foreach($produtos as $d) 
+                @foreach($produtos as $produto) 
                 <tr>
-                    <th scope="row">{{ $d->id }}</th>
-                    <td>{{ $d->nome }}</td>
+                    <th scope="row">{{ $produto->id }}</th>
+                    <td>{{ $produto->nome }}</td>
+                    <td>R$ {{ number_format($produto->preco, 2, ',', '.') }}</td>
+                    <td>{{ $produto->estoque }} unidade(s)</td>
                     <td>
-                        <form action="{{ route('produtos.destroy', $d->id) }}" method="POST">
+                        <form action="{{ route('produtos.destroy', $produto->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">
                                 Apagar
                             </button>                            
                             <a class="btn btn-primary btn-sm active" 
-                                href="{{ route('produtos.show', $d->id) }}">
+                                href="{{ route('produtos.show', $produto->id) }}">
                                 Detalhes
                             </a>
                             <a class="btn btn-secondary btn-sm active" 
-                                href="{{ route('produtos.edit', $d->id) }}">
+                                href="{{ route('produtos.edit', $produto->id) }}">
                                 Editar
                             </a>
                         </form>

@@ -37,9 +37,13 @@ class MarcasController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' => 'required|min:2|unique:marcas'
-        ]);
+        $request->validate(
+            [ 'nome' => 'required|min:2|unique:marcas' ], 
+            [
+              "nome.min"    => "A marca deve ter no mínimo 2 letras.",
+              "nome.unique" => "Marca já cadastrada.",
+            ]
+        );
         $marca = new Marca();
         $marca->nome = $request->nome;
         $marca->save();
@@ -81,13 +85,19 @@ class MarcasController extends Controller
      */
     public function update(Request $request, Marca $marca)
     {
-        $request->validate([
-            'nome' => [
-                'required', 
-                'min:2', 
-                Rule::unique('marcas')->ignore($marca->id)
-            ]
-        ]);
+        $request->validate(
+            [
+                'nome' => [
+                    'required', 
+                    'min:2', 
+                    Rule::unique('marcas')->ignore($marca->id)
+                ]
+            ],
+            [
+                "nome.min"    => "A marca deve ter no mínimo 2 letras.",
+                "nome.unique" => "Marca já cadastrada.",
+            ]            
+        );
 
         $marca->nome = $request->nome;
         $marca->save();

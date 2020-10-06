@@ -16,7 +16,7 @@ class CreateTableProdutoDepartamento extends Migration
         Schema::create('produto_departamento', function (Blueprint $table) {
             $table->unsignedBigInteger('produto_id');
             $table->unsignedBigInteger('departamento_id');
-            $table->foreign('produto_id')->references('id')->on('produtos');
+            $table->foreign('produto_id')->references('id')->on('produtos')->onDelete('cascade');
             $table->foreign('departamento_id')->references('id')->on('departamentos');
             $table->primary(['produto_id','departamento_id']);
         });

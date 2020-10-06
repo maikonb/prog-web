@@ -37,9 +37,13 @@ class DepartamentosController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nome' => 'required|min:2|unique:departamentos'
-        ]);
+        $request->validate(
+            [   'nome' => 'required|min:2|unique:departamentos'  ],
+            [
+                "nome.min"    => "O nome de departamento deve ter no mínimo 2 letras.",
+                "nome.unique" => "Departamento já cadastrado.",
+            ]
+        );
         $departamento = new Departamento();
         $departamento->nome = $request->nome;
         $departamento->save();
@@ -81,13 +85,19 @@ class DepartamentosController extends Controller
      */
     public function update(Request $request, Departamento $departamento)
     {
-        $request->validate([
-            'nome' => [
-                'required', 
-                'min:2', 
-                Rule::unique('departamentos')->ignore($departamento->id)
-            ]
-        ]);
+        $request->validate(
+            [
+                'nome' => [
+                    'required', 
+                    'min:2', 
+                    Rule::unique('departamentos')->ignore($departamento->id)
+                ]
+            ],
+            [
+                "nome.min"    => "O nome de departamento deve ter no mínimo 2 letras.",
+                "nome.unique" => "Departamento já cadastrado.",
+            ]            
+        );
 
         $departamento->nome = $request->nome;
         $departamento->save();
