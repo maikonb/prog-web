@@ -95,6 +95,7 @@ class DaoProduto {
             LEFT JOIN marcas ON marcas.id = produtos.marca_id";
     $stmt = $this->connection->prepare($sql);
     $produtos = [];
+    $marcas = [];
     if ($stmt) {
       if ($stmt->execute()) {
         $id = 0; $nome = '';
@@ -103,12 +104,10 @@ class DaoProduto {
         );
         $stmt->store_result();
         while($stmt->fetch()) {
-          // TODO: Criar uma unica instancia para cada marca
-          //       de modo a otimizar a memoria.
-          // Adotei a abordagem abaixo por ser mais rapido, 
-          // mas nao eh eficiente          
-          $marca = new Marca($marca_nome, $marca_id);
-          $produtos[] = new Produto($nome, $preco, $estoque, $marca, $id);
+          if(!array_key_exists($marca_id, $marcas)) {
+            $marcas[$marca_id] = new Marca($marca_nome, $marca_id);
+          } 
+          $produtos[] = new Produto($nome, $preco, $estoque, $marcas[$marca_id], $id);
         }
       }
       $stmt->close();
